@@ -8,6 +8,8 @@ import {Course} from '../model/course';
 })
 export class CourseCardComponent implements OnInit {
   
+  @Input() cardIndex: number;
+  
   @Input() course: Course;
   
   @Output() courseSelected = new EventEmitter<Course>();
