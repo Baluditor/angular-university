@@ -9,17 +9,12 @@
 
 <div class="courses">
   
-  <course-card
-    (courseSelected)="onCourseSelected($event)"
-    [course]="coreCourse"
-  ></course-card>
-  <course-card
-    (courseSelected)="onCourseSelected($event)"
-    [course]="rxjsCourse"
-  ></course-card>
-  <course-card
-    (courseSelected)="onCourseSelected($event)"
-    [course]="ngrxCourse"
-  ></course-card>
+  <ng-container *ngFor="let course of courses">
+    
+    <course-card
+      (courseSelected)="onCourseSelected($event)"
+      [course]="course"
+    ></course-card>
+  </ng-container>
 
 </div>
