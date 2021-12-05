@@ -7,7 +7,10 @@
 
 </div>
 
-<div class="courses">
+<div
+  class="courses"
+  #container
+>
   
   <div>Start date {{ startDate | date: 'yyyy MM dd' }}</div>
   
@@ -27,10 +30,17 @@
   <!--    ></course-card>-->
   <!--  </ng-container>-->
   <course-card
+    #cardRef
     (courseSelected)="onCourseSelected($event)"
     [course]="courses[2]"
   >
+  </course-card>
   
+  <course-card
+    #cardRef2
+    (courseSelected)="onCourseSelected($event)"
+    [course]="courses[3]"
+  >
   </course-card>
 
 </div>
