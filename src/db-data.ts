@@ -8,7 +8,6 @@ export const COURSES: any = [
     // iconUrl:
     // 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
     longDescription: 'A detailed walk-through of the most important part of Angular - the Core and Common modules',
-    category: 'INTERMEDIATE',
     lessonsCount: 10,
   },
   {
