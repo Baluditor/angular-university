@@ -10,7 +10,7 @@ import {Course} from './model/course';
 })
 export class AppComponent implements AfterViewInit {
   
-  courses = COURSES;
+  courses: Array<Course> = COURSES;
   
   startDate = new Date();
   

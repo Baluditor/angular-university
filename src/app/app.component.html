@@ -56,16 +56,7 @@
       [course]="course"
     >
       
-      <div class="course-image">
-        
-        <img
-          alt="Angular Logo"
-          [src]="course.iconUrl"
-          width="300"
-        >
-        
-        <div>total number of lessons: 10</div>
-      </div>
+      <course-image [src]="course.iconUrl"></course-image>
       
       <div class="course-description">
         {{course.longDescription}}
