@@ -6,22 +6,31 @@
   <div class="course-title">
     {{cardIndex || '' + ' ' + course.description}}
   </div>
-  <img
-    *ngIf="course.iconUrl; else noImage"
-    alt="Angular Logo"
-    [src]="course.iconUrl"
-    width="300"
-  >
   
-  <ng-template #noImage>
-    <p>No image is available</p>
-  </ng-template>
+  <!--  If we want to restrict what's we wanna accept from the projection, we
+  can use a css selector to do that-->
+  <ng-content select=".course-image"></ng-content>
+  <ng-content select=".course-description"></ng-content>
   
+  <!--  We can obtain any projected content without selector like so -->
+  <ng-content></ng-content>
+  <!--  -->
+  <!--  <img-->
+  <!--    *ngIf="course.iconUrl; else noImage"-->
+  <!--    alt="Angular Logo"-->
+  <!--    [src]="course.iconUrl"-->
+  <!--    width="300"-->
+  <!--  >-->
+  <!--  -->
+  <!--  <ng-template #noImage>-->
+  <!--    <p>No image is available</p>-->
+  <!--  </ng-template>-->
+  <!--  -->
   
-  <div class="course-description">
-    {{course.longDescription}}
-  </div>
-  
+  <!--  <div class="course-description">-->
+  <!--    {{course.longDescription}}-->
+  <!--  </div>-->
+  <!--  -->
   <div
     class="course-category"
     [ngSwitch]="course.category"

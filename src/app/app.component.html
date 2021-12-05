@@ -14,37 +14,68 @@
   #container
 >
   
-  <div>Start date {{ startDate | date: 'yyyy MM dd' }}</div>
+  <!--  <div>Start date {{ startDate | date: 'yyyy MM dd' }}</div>-->
+  <!--  -->
+  <!--  <ng-container-->
+  <!--    *ngFor="let course of courses; index as i; first as isFirst;-->
+  <!--    last as isLast; even as isEven; odd as isOdd"-->
+  <!--  >-->
+  <!--    -->
+  <!--    <course-card-->
+  <!--      [class.is-even]="isEven"-->
+  <!--      [class.is-first]="isFirst"-->
+  <!--      [class.is-last]="isLast"-->
+  <!--      [class.is-odd]="isOdd"-->
+  <!--      [cardIndex]="i"-->
+  <!--      (courseSelected)="onCourseSelected($event)"-->
+  <!--      [course]="course"-->
+  <!--    ></course-card>-->
+  <!--  </ng-container>-->
+  <!--  -->
+  <!--  -->
+  <!--  <course-card-->
+  <!--    #cardRef-->
+  <!--    (courseSelected)="onCourseSelected($event)"-->
+  <!--    [course]="courses[2]"-->
+  <!--  >-->
+  <!--  </course-card>-->
+  <!--  -->
+  <!--  <course-card-->
+  <!--    #cardRef2-->
+  <!--    (courseSelected)="onCourseSelected($event)"-->
+  <!--    [course]="courses[3]"-->
+  <!--  >-->
+  <!--  </course-card>-->
   
-  <ng-container
-    *ngFor="let course of courses; index as i; first as isFirst;
-    last as isLast; even as isEven; odd as isOdd"
+  <div
+    class="courses"
+    *ngIf="courses[2] as course"
   >
-    
     <course-card
-      [class.is-even]="isEven"
-      [class.is-first]="isFirst"
-      [class.is-last]="isLast"
-      [class.is-odd]="isOdd"
-      [cardIndex]="i"
       (courseSelected)="onCourseSelected($event)"
       [course]="course"
-    ></course-card>
-  </ng-container>
-  
-  
-  <course-card
-    #cardRef
-    (courseSelected)="onCourseSelected($event)"
-    [course]="courses[2]"
-  >
-  </course-card>
-  
-  <course-card
-    #cardRef2
-    (courseSelected)="onCourseSelected($event)"
-    [course]="courses[3]"
-  >
-  </course-card>
+    >
+      
+      <div class="course-image">
+        
+        <img
+          alt="Angular Logo"
+          [src]="course.iconUrl"
+          width="300"
+        >
+        
+        <div>total number of lessons: 10</div>
+      </div>
+      
+      <div class="course-description">
+        {{course.longDescription}}
+      </div>
+      
+      Edit description: <textarea></textarea>
+    
+    
+    </course-card>
+  </div>
+
 
 </div>
