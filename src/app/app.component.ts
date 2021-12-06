@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, ElementRef, QueryList, ViewChildren} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {COURSES} from '../db-data';
 import {CourseCardComponent} from './course-card/course-card.component';
+import {HighlightedDirective} from './directives/highlighted.directive';
 import {Course} from './model/course';
 
 @Component({
@@ -15,12 +16,21 @@ export class AppComponent implements AfterViewInit {
   @ViewChildren(CourseCardComponent, {read: ElementRef})
   cards: QueryList<ElementRef>;
   
+  // With this if a component has more than one directive applied
+  // to it, we can get the specific one like so:
+  @ViewChild(CourseCardComponent, {read: HighlightedDirective})
+  highlighted: HighlightedDirective;
+  
+  // To view the directive
+  // @ViewChild(HighlightedDirective)
+  // highlighted: HighlightedDirective;
+  
   constructor() {
   
   }
   
   ngAfterViewInit() {
-  
+    console.log(this.highlighted);
   }
   
   onCourseSelected(course: Course) {

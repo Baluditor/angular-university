@@ -2,6 +2,10 @@ import {Directive, EventEmitter, HostBinding, HostListener, Input, Output} from 
 
 @Directive({
   selector: '[highlighted]',
+  // We can grab a reference to the particular class
+  // instance by using exportAs that would be the template
+  // name of the directive
+  exportAs: 'hl',
 })
 export class HighlightedDirective {
   
@@ -67,6 +71,11 @@ export class HighlightedDirective {
   mouseLeave() {
     console.log('mouse left');
     this.isHighlighted = false;
+    this.toggleHighlight.emit(this.isHighlighted);
+  }
+  
+  toggle() {
+    this.isHighlighted = !this.isHighlighted;
     this.toggleHighlight.emit(this.isHighlighted);
   }
   

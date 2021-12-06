@@ -9,24 +9,34 @@
 
 
 <div
-  class="courses"
   *ngIf="courses[0] as course"
+  class="courses"
 >
   <!--
    highlighted directive is an attribute directive
   The course-card is a host element for the directive
   
+  To get the exported functions of the directive we
+  should assign the shorthand to a template reference
+  (#highlighter="hl")
   -->
   <course-card
-    highlighted
-    (toggleHighlight)="onToggle($event)"
+    #highlighter="hl"
     (courseSelected)="onCourseSelected($event)"
+    (toggleHighlight)="onToggle($event)"
     [course]="course"
+    highlighted
   >
     
     <course-image [src]="course.iconUrl"></course-image>
     
-    <div class="course-description">
+    <!-- Here we can use the directives methods by getting a
+          hold of the template reference we created
+       -->
+    <div
+      (dblclick)="highlighter.toggle()"
+      class="course-description"
+    >
       {{ course.longDescription }}
     </div>
   
