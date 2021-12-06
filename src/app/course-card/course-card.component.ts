@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList} from '@angular/core';
 import {CourseImageComponent} from '../course-image/course-image.component';
 import {Course} from '../model/course';
 
@@ -7,7 +7,7 @@ import {Course} from '../model/course';
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.css'],
 })
-export class CourseCardComponent implements OnInit, AfterViewInit {
+export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentInit {
   
   @Input() cardIndex: number;
   
@@ -19,9 +19,13 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
   @ContentChild(CourseImageComponent)
   courseImageComponent: CourseImageComponent;
   
-  // Only use with content projection and want to grab the reference to some content in our component class
+  // Only use with content projection and want to grab the reference to some
+  // content in our component class
   @ContentChild(CourseImageComponent, {static: true, read: ElementRef})
   courseComponentElement;
+  
+  @ContentChildren(CourseImageComponent, {read: ElementRef})
+  images: QueryList<ElementRef>;
   
   constructor() {
   }
@@ -45,6 +49,10 @@ export class CourseCardComponent implements OnInit, AfterViewInit {
     console.log(this.courseImageComponent);
     console.log(this.courseImageComponent.imageUrl);
     console.log(this.courseComponentElement);
+  }
+  
+  public ngAfterContentInit(): void {
+    console.log(this.images);
   }
   
 }

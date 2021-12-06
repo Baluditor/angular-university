@@ -9,7 +9,22 @@
   
   <!--  If we want to restrict what's we wanna accept from the projection, we
   can use a css selector to do that-->
-  <ng-content select="course-image"></ng-content>
+  <ng-template #blankImage>
+    <p class="warn">{{ course.description }} has no image yet</p>
+    <img
+      src="/assets/empty-image.png"
+      alt="empty image"
+    >
+  </ng-template>
+  
+  <ng-container
+    *ngIf="course.iconUrl; else blankImage"
+  >
+    <ng-content
+      select="course-image"
+    ></ng-content>
+  </ng-container>
+  
   <ng-content select=".course-description"></ng-content>
   
   <!--  We can obtain any projected content without selector like so -->
