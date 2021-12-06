@@ -70,35 +70,52 @@
       >
     </ng-template>
     
+    <ng-template
+      #longDescription
+      let-longDescription="longDescription"
+    >
+      <p>{{longDescription}}</p>
+    </ng-template>
+    
+    <ng-template
+      #randomTextTpl
+      let-randomText="randomTextVariable"
+    >
+      {{randomText}}
+    </ng-template>
+    
     <!-- Directly instantiate the template with ngTemplateOutlet structural
     directive.
     We can give it a context with the context object, passing the course
     description to the template instance
      -->
-    <ng-container *ngTemplateOutlet="blankImage; context: {description: course.description}">
-    </ng-container>
     
     
-    <ng-container
-      *ngTemplateOutlet="blankImage; context: {description:
-    courses[3].description}"
-    >
-    </ng-container>
+    <!--    <ng-container-->
+    <!--      *ngTemplateOutlet="blankImage; context: {description:-->
+    <!--        courses[3].description}"-->
+    <!--    >-->
+    <!--    </ng-container>-->
     
-    <hr>
-    <hr>
+    
+    <!--    Pass the blank image template to the course card component -->
     <course-card
       (courseSelected)="onCourseSelected($event)"
       [course]="course"
+      [noImageTpl]="blankImage"
+      [longDescriptionTpl]="longDescription"
+      [randomTextTpl]="randomTextTpl"
     >
       
       <course-image [src]="course.iconUrl"></course-image>
       <course-image [src]="courses[3].iconUrl"></course-image>
       <course-image [src]="courses[5].iconUrl"></course-image>
       
-      <div class="course-description">
-        {{course.longDescription}}
-      </div>
+      
+      <!--      <div class="course-description"> {{course.longDescription}}</div>-->
+      <!--      <div class="course-description">-->
+      <!--        {{course.longDescription}}-->
+      <!--      </div>-->
       
       Edit description: <textarea></textarea>
     

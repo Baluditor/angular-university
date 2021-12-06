@@ -1,4 +1,4 @@
-import {AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, TemplateRef} from '@angular/core';
 import {CourseImageComponent} from '../course-image/course-image.component';
 import {Course} from '../model/course';
 
@@ -9,11 +9,24 @@ import {Course} from '../model/course';
 })
 export class CourseCardComponent implements OnInit, AfterViewInit, AfterContentInit {
   
-  @Input() cardIndex: number;
+  @Input()
+  cardIndex: number;
   
-  @Input() course: Course;
+  @Input()
+  course: Course;
   
-  @Output() courseSelected = new EventEmitter<Course>();
+  // Receive a template reference
+  @Input()
+  noImageTpl: TemplateRef<any>;
+  
+  @Input()
+  longDescriptionTpl: TemplateRef<any>;
+  
+  @Input()
+  randomTextTpl: TemplateRef<any>;
+  
+  @Output()
+  courseSelected = new EventEmitter<Course>();
   
   // Get the component itself
   @ContentChild(CourseImageComponent)
