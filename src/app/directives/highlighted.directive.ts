@@ -1,4 +1,4 @@
-import {Directive, HostBinding, Input} from '@angular/core';
+import {Directive, EventEmitter, HostBinding, HostListener, Input, Output} from '@angular/core';
 
 @Directive({
   selector: '[highlighted]',
@@ -7,6 +7,9 @@ export class HighlightedDirective {
   
   @Input('highlighted')
   isHighlighted: boolean = false;
+  
+  @Output()
+  toggleHighlight = new EventEmitter<boolean>();
   
   constructor() {
   }
@@ -46,6 +49,25 @@ export class HighlightedDirective {
   @HostBinding('attr.disabled')
   get disabled(): string {
     return 'true';
+  }
+  
+  // The DOM event we want to listen to as a string.
+  // If we want to get other events we need to provide
+  // them in an array. For example if we want to get the
+  // native event, we should provide the $event like so.
+  @HostListener('mouseover', ['$event'])
+  mouseOver($event) {
+    // console.log($event);
+    console.log(`mouse entered`);
+    this.isHighlighted = true;
+    this.toggleHighlight.emit(this.isHighlighted);
+  }
+  
+  @HostListener('mouseleave')
+  mouseLeave() {
+    console.log('mouse left');
+    this.isHighlighted = false;
+    this.toggleHighlight.emit(this.isHighlighted);
   }
   
 }

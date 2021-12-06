@@ -18,7 +18,8 @@
   
   -->
   <course-card
-    [highlighted]="true"
+    highlighted
+    (toggleHighlight)="onToggle($event)"
     (courseSelected)="onCourseSelected($event)"
     [course]="course"
   >
