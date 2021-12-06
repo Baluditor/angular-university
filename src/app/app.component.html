@@ -12,9 +12,13 @@
   class="courses"
   *ngIf="courses[0] as course"
 >
-  <!--  highlighted directive is an attribute directive-->
+  <!--
+   highlighted directive is an attribute directive
+  The course-card is a host element for the directive
+  
+  -->
   <course-card
-    highlighted
+    [highlighted]="true"
     (courseSelected)="onCourseSelected($event)"
     [course]="course"
   >
