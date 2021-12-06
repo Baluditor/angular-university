@@ -51,6 +51,42 @@
     class="courses"
     *ngIf="courses[2] as course"
   >
+    <!--    The template itself.
+     With the let-VARIABLE-NAME it's an input for the template.
+     We can use it inside of the template
+     This is the context.
+     Witch the let assignment we need to pass an actual value.
+     That can be done via the ngTemplateOutlet, and we can access it as a
+     plan JS object
+     -->
+    <ng-template
+      #blankImage
+      let-courseName="description"
+    >
+      <p class="warn">{{ courseName }} has no image yet</p>
+      <img
+        src="/assets/empty-image.png"
+        alt="empty image"
+      >
+    </ng-template>
+    
+    <!-- Directly instantiate the template with ngTemplateOutlet structural
+    directive.
+    We can give it a context with the context object, passing the course
+    description to the template instance
+     -->
+    <ng-container *ngTemplateOutlet="blankImage; context: {description: course.description}">
+    </ng-container>
+    
+    
+    <ng-container
+      *ngTemplateOutlet="blankImage; context: {description:
+    courses[3].description}"
+    >
+    </ng-container>
+    
+    <hr>
+    <hr>
     <course-card
       (courseSelected)="onCourseSelected($event)"
       [course]="course"
