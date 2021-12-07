@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {CourseCardComponent} from './course-card/course-card.component';
 import {CourseImageComponent} from './course-image/course-image.component';
 import {HighlightedDirective} from './directives/highlighted.directive';
-import { NgxUnlessDirective } from './directives/ngx-unless.directive';
+import {NgxUnlessDirective} from './directives/ngx-unless.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { NgxUnlessDirective } from './directives/ngx-unless.directive';
     BrowserModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [NgxUnlessDirective],
   bootstrap: [AppComponent],
 })
 export class AppModule {

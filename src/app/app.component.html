@@ -40,7 +40,16 @@
       highlighted
     >
       
-      <course-image [src]="course.iconUrl"></course-image>
+      <course-image
+        *ngxUnless="!course.iconUrl"
+        [src]="course.iconUrl"
+      ></course-image>
+      
+      <!--      <ng-template [ngxUnless]="!course.iconUrl">-->
+      <!--        -->
+      <!--        <course-image [src]="course.iconUrl"></course-image>-->
+      <!--        -->
+      <!--      </ng-template>-->
       
       <div
         (dblclick)="highlighter.toggle()"
