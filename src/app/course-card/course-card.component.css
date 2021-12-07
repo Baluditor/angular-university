@@ -1,6 +1,73 @@
+/*To apply style to the host element we should use the :host syntax*/
+:host {
+    display: block;
+}
 
-.course-card.beginner {
-    background: lightsalmon;
+/*
+    All of those with :host are targeting the host element,
+    meaning that the component selector itself.
+    In other words that we target the course-card
+    (same name as the component selector, most cases this
+    would be app-course-card) to style the component. But
+    with :host we can extract that from the parent stylesheet
+    and move it to the component itself.
+
+    Example:
+    This from this in the styles.css
+    course-card {
+        display: block;
+    }
+    Will become
+    :host {
+    display: block;
+}
+*/
+
+.course-card {
+    margin-bottom: 40px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 20px 0;
+    box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
+}
+
+.course-card .course-title {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.course-card .course-description {
+    max-width: 360px;
+    margin: 0 auto;
+    margin-top: 15px;
+    user-select: none;
+}
+
+.course-card img {
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+:host.is-first {
+    border-top: 2px solid grey;
+    padding-top: 20px;
+}
+
+:host.is-last {
+    border-bottom: 2px solid grey;
+    padding-top: 20px;
+}
+
+:host.is-even {
+    background: lightgray;
 }
 
 
+:host.is-odd {
+    background: lightcyan;
+}
+
+/*.:host.beginner {*/
+/*    background: lightsalmon;*/
+/*}*/
