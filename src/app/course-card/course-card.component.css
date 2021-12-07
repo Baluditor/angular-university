@@ -23,6 +23,17 @@
 }
 */
 
+/*
+    :host-context can be applied only to a section of
+    the css selector. Only apply it where this selector
+    (salmon-theme can be found).
+    It's a great way to apply styles coming outside of
+    the component itself.
+*/
+:host-context(.salmon-theme) .course-card {
+    background-color: salmon;
+}
+
 .course-card {
     margin-bottom: 40px;
     text-align: center;
@@ -31,20 +42,24 @@
     box-shadow: 0 1px 16px 0 rgba(0, 0, 0, .2), 0 2px 8px 0 rgba(0, 0, 0, .14), 0 4px 8px -1px rgba(0, 0, 0, .12);
 }
 
-.course-card .course-title {
+/*
+    ngDeep can be used to style the components
+    provided by content projection
+*/
+
+.course-card ::ng-deep .course-title {
     font-size: 27px;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-.course-card .course-description {
+.course-card ::ng-deep .course-description {
     max-width: 360px;
     margin: 0 auto;
     margin-top: 15px;
     user-select: none;
 }
 
-.course-card img {
+.course-card ::ng-deep img {
     border-radius: 4px;
     margin-top: 10px;
 }
