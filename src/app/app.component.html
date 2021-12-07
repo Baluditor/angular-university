@@ -7,6 +7,54 @@
 
 </div>
 
+<!--
+  This is what goes under the hood when using the * syntax.
+  Angular will wrap the element in an ng-template where
+  the structural directive applied.
+  Here the as cannot be use, therefore we need to specify a
+  template variable (course) which will have the value from
+  the expression implicitly if we not assigning any value.
+  This will be only visible inside the template.
+-->
+
+<!--
+  Structural directives like ngIf are really nothing more
+  than plain attribute directives that have the special
+  ability of instantiating a template on to which they
+  applied.
+-->
+
+<ng-template
+  [ngIf]="courses[0]"
+  let-course
+>
+  
+  <div
+    class="courses"
+  >
+    <course-card
+      #highlighter="hl"
+      (courseSelected)="onCourseSelected($event)"
+      (toggleHighlight)="onToggle($event)"
+      [course]="course"
+      highlighted
+    >
+      
+      <course-image [src]="course.iconUrl"></course-image>
+      
+      <div
+        (dblclick)="highlighter.toggle()"
+        class="course-description"
+      >
+        {{ course.longDescription }}
+      </div>
+    
+    </course-card>
+  
+  </div>
+
+</ng-template>
+
 
 <div
   *ngIf="courses[0] as course"
